@@ -2,7 +2,7 @@ DEPENDS += "openssl virtual/docker aziotctl aziot-keys tpm2-tss clang-native lib
 RDEPENDS:${PN} += "docker libtss2 libtss2-mu libtss2-tcti-device aziot-keys"
 TOOLCHAIN = "clang"
 
-inherit systemd 
+inherit systemd
 
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 SYSTEMD_SERVICE:${PN} = "aziot-certd.service "
@@ -23,7 +23,7 @@ SRC_URI += "file://aziot-certd.service \
 do_install () {
     # Binaries
     install -d ${D}${bindir}
-    install -m 755 ${WORKDIR}/build/target/${TARGET_SYS}/release/aziotd ${D}${bindir}/aziotd
+    install -m 755 ${WORKDIR}/build/target/${RUST_TARGET_SYS}/release/aziotd ${D}${bindir}/aziotd
     install -d ${D}${systemd_unitdir}/system
 
     # Create symbolic links
